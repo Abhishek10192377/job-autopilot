@@ -1,0 +1,128 @@
+{
+  "name": "Abhishek Kumar",
+  "headline": "Full Stack Developer",
+  "summary": "Full Stack Developer with experience in Next.js, React.js, Node.js, and SQL Server. Skilled in developing scalable web applications, REST APIs, authentication systems, and enterprise-level management modules. Experienced in building full-stack solutions using SMTP/IMAP integration, Stored Procedures, and modern frontend technologies. Adaptable to diverse project requirements and quick to learn new technologies.",
+  "contact": {
+    "email": "abhisheksahni0077@gmail.com",
+    "phone": "+91 6284572866",
+    "linkedin": "https://www.linkedin.com/in/abhishek-sahni-6a7042308",
+    "github": "https://github.com/Abhishek10192377"
+  },
+  "skills": [
+    { "category": "Programming Languages", "items": ["JavaScript", "TypeScript", "HTML5", "CSS3"] },
+    { "category": "Frontend", "items": ["React.js", "Next.js", "Tailwind CSS", "Bootstrap", "Material UI"] },
+    { "category": "Backend", "items": ["Node.js", "Express.js"] },
+    { "category": "Databases", "items": ["MongoDB", "SQL Server"] },
+    { "category": "Tools", "items": ["Git", "GitHub", "Postman", "SSMS", "REST APIs", "JWT", "Vite", "Netlify", "Render"] },
+    { "category": "Concepts", "items": ["Responsive Design", "Authentication", "API Integration", "Scalability"] }
+  ],
+  "additionalSkills": ["Stored Procedures", "SMTP", "IMAP", "MERN", "Role-based access control (RBAC)", "Sprint planning (Agile)"],
+  "softSkills": ["Adaptability", "Quick Learning", "Problem Solving", "Team Collaboration", "Time Management"],
+  "experience": [
+    {
+      "id": "lpu",
+      "company": "Lovely Professional University",
+      "title": "Assistant Software Developer",
+      "type": "full-time",
+      "location": "Jalandhar, Punjab",
+      "start": "2025-07",
+      "end": null,
+      "bullets": [
+        { "id": "lpu-1", "text": "Developing and maintaining Student UMS and Staff UMS modules using Next.js, TypeScript, and Material UI." },
+        { "id": "lpu-2", "text": "Built reusable and responsive frontend components to improve maintainability and user experience." },
+        { "id": "lpu-3", "text": "Worked with SQL Server and implemented Stored Procedures for efficient backend data operations." },
+        { "id": "lpu-4", "text": "Actively contributed to team discussions, sprint planning, and code reviews." },
+        { "id": "lpu-5", "text": "Independently developed a full-stack Email Distribution System using Node.js, Next.js, SQL Server, and SMTP & IMAP protocols." },
+        { "id": "lpu-6", "text": "Designed backend APIs and integrated secure email communication workflows." },
+        { "id": "lpu-7", "text": "Collaborated with teams during migration of the Email Distribution System from Node.js to .NET architecture." },
+        { "id": "lpu-8", "text": "Participated in sprint planning, debugging, testing, and code reviews within the development team." }
+      ]
+    },
+    {
+      "id": "ansh",
+      "company": "Ansh Infotech",
+      "title": "Full Stack Web Developer (Intern)",
+      "type": "internship",
+      "location": "Ludhiana, Punjab",
+      "start": "2025-01",
+      "end": "2025-06",
+      "bullets": [
+        { "id": "ansh-1", "text": "Developed interactive dashboards and data management modules using the MERN stack to improve operational efficiency." },
+        { "id": "ansh-2", "text": "Designed and integrated secure JWT-based authentication and role-based access control (RBAC) for user authorization." },
+        { "id": "ansh-3", "text": "Developed responsive and reusable frontend components using React.js, JavaScript, and Bootstrap." },
+        { "id": "ansh-4", "text": "Collaborated with the development team in debugging, testing, and deploying web applications." }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "eds",
+      "name": "Email Distribution System",
+      "stack": ["Next.js", "Node.js", "SQL Server", "SMTP", "IMAP", "TypeScript"],
+      "bullets": [
+        { "id": "eds-1", "text": "Independently developed a full-stack email distribution platform for internal communication and workflow management." },
+        { "id": "eds-2", "text": "Integrated SMTP and IMAP protocols for secure email sending and receiving functionality." },
+        { "id": "eds-3", "text": "Designed and implemented backend APIs using Node.js with SQL Server Stored Procedures for efficient data handling." },
+        { "id": "eds-4", "text": "Built responsive and reusable frontend modules using Next.js, TypeScript, and Material UI." },
+        { "id": "eds-5", "text": "Implemented email assignment, tracking, unread status, and role-based workflow functionalities." },
+        { "id": "eds-6", "text": "Collaborated during migration of the application architecture from Node.js to .NET backend." }
+      ]
+    },
+    {
+      "id": "novel",
+      "name": "Novel Web",
+      "stack": ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "REST API"],
+      "url": "https://novelwebfrontend.onrender.com",
+      "bullets": [
+        { "id": "novel-1", "text": "Developed a full-stack novel reading and publishing platform using the MERN stack." },
+        { "id": "novel-2", "text": "Implemented JWT-based authentication and protected routes for secure user access." },
+        { "id": "novel-3", "text": "Built features for reading, writing, updating, and managing novels by chapters." },
+        { "id": "novel-4", "text": "Designed admin dashboard for managing books, categories, and users." },
+        { "id": "novel-5", "text": "Integrated MongoDB with optimized schema design for efficient data management." },
+        { "id": "novel-6", "text": "Developed responsive UI components to ensure compatibility across devices." }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Ramgarhia Institute of Engineering and Technology (Affiliated to IKGPTU)",
+      "degree": "B.Tech in Computer Science and Engineering",
+      "detail": "CGPA: 7.35/10",
+      "location": "Phagwara, Punjab",
+      "years": "2021 – 2025"
+    },
+    {
+      "institution": "Government Senior Secondary Smart School (Boys)",
+      "degree": "Senior Secondary (XII) – Non Medical",
+      "detail": "80%",
+      "location": "Phagwara, Punjab",
+      "years": "2019 – 2021"
+    },
+    {
+      "institution": "Brilliant Public School",
+      "degree": "Matriculation (X)",
+      "detail": "68%",
+      "location": "Phagwara, Punjab",
+      "years": "2018 – 2019"
+    }
+  ],
+  "answers": {
+    "fullName": { "question": "Full name", "value": "Abhishek Kumar", "verified": true },
+    "email": { "question": "Email", "value": "abhisheksahni0077@gmail.com", "verified": true },
+    "phone": { "question": "Phone", "value": "+91 6284572866", "verified": true },
+    "linkedin": { "question": "LinkedIn profile", "value": "https://www.linkedin.com/in/abhishek-sahni-6a7042308", "verified": true },
+    "github": { "question": "GitHub profile", "value": "https://github.com/Abhishek10192377", "verified": true },
+    "currentCompany": { "question": "Current company", "value": "Lovely Professional University", "verified": true },
+    "currentTitle": { "question": "Current job title", "value": "Assistant Software Developer", "verified": true },
+    "highestEducation": { "question": "Highest education", "value": "B.Tech in Computer Science and Engineering (2025)", "verified": true },
+    "totalExperience": { "question": "Total experience", "value": "", "verified": true },
+    "currentLocation": { "question": "Current city", "value": "", "verified": false },
+    "noticePeriod": { "question": "Notice period", "value": "", "verified": false },
+    "currentCTC": { "question": "Current salary (CTC)", "value": "", "verified": false },
+    "expectedCTC": { "question": "Expected salary (CTC)", "value": "", "verified": false },
+    "willingToRelocate": { "question": "Willing to relocate?", "value": "", "verified": false },
+    "workAuthorization": { "question": "Work authorization", "value": "", "verified": false },
+    "visaSponsorship": { "question": "Do you require visa sponsorship?", "value": "", "verified": false },
+    "earliestStartDate": { "question": "Earliest start date", "value": "", "verified": false }
+  }
+}
