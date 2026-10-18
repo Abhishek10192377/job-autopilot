@@ -92,7 +92,7 @@ export default function DashboardPage() {
             )}
             {!data.system.aiConfigured && (
               <Alert severity="info">
-                No AI key is set, so scores and documents come from the built-in rule-based engine. Add <code>ANTHROPIC_API_KEY</code> to <code>.env.local</code> for AI match analysis and AI-tailored letters.
+                Ollama is not configured, so scores and documents come from the built-in rule-based engine. Set <code>OLLAMA_URL</code> and <code>OLLAMA_MODEL</code> in <code>.env</code> for AI match analysis and AI-tailored letters.
               </Alert>
             )}
           </Stack>

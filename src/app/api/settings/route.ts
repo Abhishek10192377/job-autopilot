@@ -11,7 +11,7 @@ async function payload(settings: Settings) {
     settings,
     sources: await sourceStatuses(settings),
     unsupported: UNSUPPORTED_PLATFORMS,
-    system: { aiConfigured: env.aiConfigured, aiModel: env.aiModel, smtpConfigured: env.smtp !== null, browserChannel: env.browserChannel },
+    system: { aiConfigured: env.aiConfigured, aiModel: env.ollamaModel, smtpConfigured: env.smtp !== null, browserChannel: env.browserChannel },
   };
 }
 

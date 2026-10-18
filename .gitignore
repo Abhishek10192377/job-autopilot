@@ -10,4 +10,3 @@ next-env.d.ts
 
 # Personal data: resume files, generated documents, browser profile, local database
 data/private/
-.mongo-data/

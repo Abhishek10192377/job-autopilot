@@ -6,7 +6,6 @@ import {
 import { useRouter } from "next/navigation";
 import {  useState } from "react";
 import { useToast } from "@/app/providers";
-import { getJob } from "@action/jobs";
 import { api } from "@/client/api";
 
 const ACTIVE = "matched,saved,prepared,awaiting_approval";

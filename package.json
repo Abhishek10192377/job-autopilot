@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start -p 3100",
     "worker": "tsx src/worker/index.ts",
-    "db": "node scripts/start-db.mjs",
     "setup": "tsx scripts/setup.ts",
     "set-password": "tsx scripts/set-password.ts",
     "discover": "tsx scripts/discover.ts",

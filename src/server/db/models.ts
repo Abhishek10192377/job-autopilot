@@ -9,9 +9,7 @@ export interface IJob {
   sources: { source: string; url: string }[];
   url: string;
   applyUrl: string;
-  /** Normalised URL — one listing per stable URL. */
   urlKey: string;
-  /** Normalised company|title — catches the same role re-posted on another board. */
   dedupeKey: string;
   title: string;
   company: string;
@@ -92,7 +90,6 @@ export interface IApplication {
   preparedAt: Date;
   appliedAt?: Date | null;
   appliedVia?: string | null;
-  /** Set before an application email goes out, so it can never be sent twice. */
   emailSentAt?: Date | null;
   followUpDate?: Date | null;
   followUpNotifiedAt?: Date | null;
@@ -106,10 +103,8 @@ export interface IApplication {
 
 const ApplicationSchema = new Schema<IApplication>(
   {
-    // Unique: at most one application record per job.
     jobId: { type: Schema.Types.ObjectId, ref: "Job", required: true, unique: true },
     resumeVersion: { type: Number, default: 1 },
-    // Null when a job was marked as applied without preparing materials here.
     materials: { type: Schema.Types.Mixed, default: null },
     truthWarnings: [String],
     generatedBy: { type: String, default: "template" },

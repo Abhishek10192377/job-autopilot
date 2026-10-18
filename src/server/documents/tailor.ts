@@ -190,10 +190,8 @@ async function aiMaterials(job: JobFacts, profile: Profile, base: Materials, now
   const have = profileSkillSet(profile);
   const matched = jobSkills(job).filter((s) => have.has(s));
   const draft = await structured({
-    model: env.aiModel,
     system: writerSystemPrompt(profile, now),
     schema: DraftSchema,
-    effort: "medium",
     user: `<job_posting>
 Title: ${job.title}
 Company: ${job.company}

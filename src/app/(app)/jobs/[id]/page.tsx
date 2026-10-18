@@ -60,7 +60,7 @@ function MatchPanel({ job, match, aiConfigured, reasons, act, busy }: { job: Job
           </Stack>
           <Stack direction="row" spacing={1}>
             <Button onClick={() => act("rescore")} disabled={busy}>Re-score</Button>
-            <Tooltip title={aiConfigured ? "" : "Set ANTHROPIC_API_KEY in .env.local to enable AI analysis"}>
+            <Tooltip title={aiConfigured ? "" : "Set OLLAMA_URL and OLLAMA_MODEL in .env to enable AI analysis"}>
               <span><Button variant="outlined" onClick={() => act("ai-match")} disabled={busy || !aiConfigured}>AI analysis</Button></span>
             </Tooltip>
           </Stack>

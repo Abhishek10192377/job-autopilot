@@ -84,12 +84,11 @@ describe("tailored materials", () => {
     expect(displayTitle("(Remote)")).toBe("(Remote)");
   });
 
-  it("falls back to the template when no AI key is configured", async () => {
-    const saved = process.env.ANTHROPIC_API_KEY;
-    delete process.env.ANTHROPIC_API_KEY;
-    delete process.env.ANTHROPIC_AUTH_TOKEN;
+  it("falls back to the template when Ollama is not configured", async () => {
+    const saved = process.env.OLLAMA_MODEL;
+    delete process.env.OLLAMA_MODEL;
     const result = await buildMaterials(job, profile, { now: NOW });
-    if (saved) process.env.ANTHROPIC_API_KEY = saved;
+    if (saved) process.env.OLLAMA_MODEL = saved;
     expect(result.generatedBy).toBe("template");
     expect(result.warnings).toEqual([]);
   });

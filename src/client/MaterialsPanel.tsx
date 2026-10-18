@@ -90,7 +90,7 @@ export function MaterialsPanel({ jobId, application, profile, aiConfigured, onCh
       <Button variant={draft ? "outlined" : "contained"} onClick={prepare} disabled={busy !== null || dirty}>
         {busy === "prepare" ? "Preparing…" : draft ? "Regenerate" : "Prepare application"}
       </Button>
-      <Tooltip title={aiConfigured ? "" : "Set ANTHROPIC_API_KEY in .env.local to enable AI tailoring"}>
+      <Tooltip title={aiConfigured ? "" : "Set OLLAMA_URL and OLLAMA_MODEL in .env to enable AI tailoring"}>
         <FormControlLabel control={<Switch checked={useAi} disabled={!aiConfigured} onChange={(e) => setUseAi(e.target.checked)} />} label="Tailor with AI" />
       </Tooltip>
     </Stack>

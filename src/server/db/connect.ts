@@ -1,24 +1,25 @@
 import mongoose from "mongoose";
 import { env } from "../config/env";
 
-const g = globalThis as unknown as { __mongoose?: Promise<typeof mongoose> };
+const cached = globalThis as typeof globalThis & {
+  mongoose?: Promise<typeof mongoose>;
+};
 
-/** One shared connection per process (survives Next.js hot reloads). */
-export function connectDb(): Promise<typeof mongoose> {
-  if (!g.__mongoose) {
-    g.__mongoose = mongoose.connect(env.mongoUri, { serverSelectionTimeoutMS: 5000 }).catch((e) => {
-      g.__mongoose = undefined;
-      throw new Error(
-        `Cannot reach MongoDB at ${env.mongoUri.replace(/\/\/[^@/]+@/, "//***@")} — start it with "npm run db". (${e.message})`,
-      );
-    });
+export async function connectDb() {
+  if (!cached.mongoose) {
+    cached.mongoose = mongoose
+      .connect(env.mongoUri)
+      .catch((error) => {
+        cached.mongoose = undefined;
+        throw error;
+      });
   }
-  return g.__mongoose;
+  return cached.mongoose;
 }
 
 export async function disconnectDb() {
-  if (g.__mongoose) {
+  if (cached.mongoose) {
     await mongoose.disconnect();
-    g.__mongoose = undefined;
+    cached.mongoose = undefined;
   }
 }
