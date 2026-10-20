@@ -1,0 +1,40 @@
+# Render Blueprint: one free web service running the Next.js app and the background worker together.
+# Secrets marked `sync: false` are entered in the Render dashboard on first deploy — never commit them.
+services:
+  - type: web
+    name: job-autopilot
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run start:all
+    healthCheckPath: /login
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: PORT
+        value: "3100"
+      # --- Required ---
+      - key: MONGODB_URI
+        sync: false
+      - key: AUTH_SECRET
+        sync: false
+      - key: DASHBOARD_PASSWORD_HASH
+        sync: false
+      # --- AI ---
+      - key: OLLAMA_URL
+        sync: false
+      - key: OLLAMA_MODEL
+        sync: false
+      - key: OLLAMA_API_KEY
+        sync: false
+      # --- Email applications and reminders (optional) ---
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false
