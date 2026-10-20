@@ -3,8 +3,8 @@
 import { randomBytes } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { compareResume, parseResumePdf, resumeDir } from "../src/server/profile/resume";
-import { loadSeedProfile } from "../src/server/profile/profile";
+import { compareResume, parseResumePdf, resumeDir } from "../src/services/profile/resume";
+import { loadSeedProfile } from "../src/services/profile/profile";
 
 async function main() {
   if (!existsSync(".env.local")) {

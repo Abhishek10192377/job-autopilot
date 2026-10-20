@@ -1,15 +1,15 @@
 import { existsSync } from "node:fs";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { Application, Job } from "@/server/db/models";
-import { ingest } from "@/server/discovery/discover";
-import { enrich } from "@/server/discovery/enrich";
-import { prepareApplication, updateMaterials } from "@/server/documents/prepare";
-import { renderLetterPdf, renderResumeDocx, renderResumePdf, resolveResume } from "@/server/documents/render";
-import { buildMaterials, displayTitle, firstPerson, reviewMaterials, templateMaterials } from "@/server/documents/tailor";
-import { checkTruth } from "@/server/documents/truth";
-import { extractSkills } from "@/server/matching/lexicon";
-import { loadSeedProfile, mentionableSkills } from "@/server/profile/profile";
-import { compareResume, parseResumeText } from "@/server/profile/resume";
+import { Application, Job } from "@/models";
+import { ingest } from "@/services/discovery/discover";
+import { enrich } from "@/services/discovery/enrich";
+import { prepareApplication, updateMaterials } from "@/services/documents/prepare";
+import { renderLetterPdf, renderResumeDocx, renderResumePdf, resolveResume } from "@/services/documents/render";
+import { buildMaterials, displayTitle, firstPerson, reviewMaterials, templateMaterials } from "@/services/documents/tailor";
+import { checkTruth } from "@/services/documents/truth";
+import { extractSkills } from "@/services/matching/lexicon";
+import { loadSeedProfile, mentionableSkills } from "@/services/profile/profile";
+import { compareResume, parseResumeText } from "@/services/profile/resume";
 import { NOW, rawJob, startDb, stopDb } from "./helpers";
 
 const profile = await loadSeedProfile();

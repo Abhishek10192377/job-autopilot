@@ -13,10 +13,10 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useToast } from "@/app/providers";
 import { getJob } from "@action/jobs";
-import { api, useData } from "@/client/api";
-import { useSystem } from "@/client/Shell";
-import { fmtDate, fmtExperience, fmtSalary, Loadable, PageHeader, ScoreChip, StatusChip, WorkModeChip } from "@/client/ui";
-import { STATUS_LABEL, STATUSES, type JobDTO, type JobStatus } from "@/shared/types";
+import { api, useData } from "@/hooks/useApi";
+import { useSystem } from "@/components/Shell";
+import { fmtDate, fmtExperience, fmtSalary, Loadable, PageHeader, ScoreChip, StatusChip, WorkModeChip } from "@/components/ui";
+import { STATUS_LABEL, STATUSES, type JobDTO, type JobStatus } from "@/types";
 import { AddJobDialog } from "./AddJobDialog";
 
 const ACTIVE = "matched,saved,prepared,awaiting_approval";

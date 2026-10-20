@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { enrich } from "@/server/discovery/enrich";
-import { extractApplyEmail, extractExperience, extractSalary, extractWorkingDays, isRelevantTitle } from "@/server/discovery/extract";
-import { qualifies, scoreJob } from "@/server/matching/heuristic";
-import { classifyJobSkills, extractSkills } from "@/server/matching/lexicon";
-import { statusAfterScoring } from "@/server/matching/match";
-import { experienceSummary, loadSeedProfile, profileSkillSet } from "@/server/profile/profile";
-import { DEFAULT_SETTINGS } from "@/server/settings";
-import { COMPONENT_KEYS, COMPONENT_MAX } from "@/shared/types";
+import { enrich } from "@/services/discovery/enrich";
+import { extractApplyEmail, extractExperience, extractSalary, extractWorkingDays, isRelevantTitle } from "@/services/discovery/extract";
+import { qualifies, scoreJob } from "@/services/matching/heuristic";
+import { classifyJobSkills, extractSkills } from "@/services/matching/lexicon";
+import { statusAfterScoring } from "@/services/matching/match";
+import { experienceSummary, loadSeedProfile, profileSkillSet } from "@/services/profile/profile";
+import { DEFAULT_SETTINGS } from "@/services/settingsService";
+import { COMPONENT_KEYS, COMPONENT_MAX } from "@/types";
 import { NOW, rawJob } from "./helpers";
 
 const profile = await loadSeedProfile();

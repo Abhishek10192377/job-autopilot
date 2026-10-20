@@ -5,9 +5,9 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { Alert, Button, Checkbox, Chip, Grid, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { useToast } from "@/app/providers";
-import { api, useData } from "@/client/api";
-import { Loadable, PageHeader } from "@/client/ui";
-import type { Profile, ProfileBullet } from "@/shared/types";
+import { api, useData } from "@/hooks/useApi";
+import { Loadable, PageHeader } from "@/components/ui";
+import type { Profile, ProfileBullet } from "@/types";
 
 interface Payload {
   profile: Profile;

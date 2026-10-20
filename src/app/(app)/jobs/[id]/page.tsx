@@ -8,12 +8,12 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useToast } from "@/app/providers";
-import { api, useData } from "@/client/api";
-import { MaterialsPanel, type ApplicationView } from "@/client/MaterialsPanel";
-import { useSystem } from "@/client/Shell";
-import { dateInput, fmtDate, fmtDateTime, fmtExperience, fmtSalary, Loadable, ScoreChip, StatusChip, WorkModeChip } from "@/client/ui";
-import { nextStatuses } from "@/shared/status";
-import { COMPONENT_KEYS, COMPONENT_LABEL, STATUS_LABEL, type JobDTO, type JobStatus, type MatchResult, type Profile } from "@/shared/types";
+import { api, useData } from "@/hooks/useApi";
+import { MaterialsPanel, type ApplicationView } from "@/components/MaterialsPanel";
+import { useSystem } from "@/components/Shell";
+import { dateInput, fmtDate, fmtDateTime, fmtExperience, fmtSalary, Loadable, ScoreChip, StatusChip, WorkModeChip } from "@/components/ui";
+import { nextStatuses } from "@/utils/status";
+import { COMPONENT_KEYS, COMPONENT_LABEL, STATUS_LABEL, type JobDTO, type JobStatus, type MatchResult, type Profile } from "@/types";
 
 interface Overview {
   policy: { channel: string; label: string; assistedAutofill: boolean; autoSubmit: boolean; explanation: string };
@@ -127,12 +127,18 @@ function MatchPanel({ job, match, aiConfigured, reasons, act, busy }: { job: Job
   );
 }
 
-function ApplyPanel({ detail, act, busy, reload }: { detail: Detail; act: (action: string) => Promise<unknown>; busy: boolean; reload: () => Promise<void> }) {
+function ApplyPanel({ detail, act, busy, reload }: { detail: Detail; act: (action: string, extra?: Record<string, unknown>) => Promise<unknown>; busy: boolean; reload: () => Promise<void> }) {
   const { job, application: app, overview } = detail;
   const toast = useToast();
   const submitted = ["applied", "interview", "offer", "rejected"].includes(job.status);
   const prepared = Boolean(app?.materials);
   const [confirm, setConfirm] = useState<"email" | "applied" | null>(null);
+  const [emailTo, setEmailTo] = useState("");
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTo.trim());
+  const openEmail = () => {
+    setEmailTo(job.applyEmail || app?.recruiter?.email || "");
+    setConfirm("email");
+  };
   const [report, setReport] = useState<AutofillReport | null>(null);
   const tracking = () => ({
     followUpDate: dateInput(app?.followUpDate),
@@ -207,11 +213,9 @@ function ApplyPanel({ detail, act, busy, reload }: { detail: Detail; act: (actio
                 </span>
               </Tooltip>
             )}
-            {overview.policy.channel === "email" && (
-              <Tooltip title={overview.smtpConfigured ? "" : "Set SMTP_HOST, SMTP_USER and SMTP_PASS in .env.local to send email"}>
-                <span><Button variant="contained" disabled={busy || !prepared || !overview.smtpConfigured || Boolean(overview.duplicateOf)} onClick={() => setConfirm("email")}>Review and send email…</Button></span>
-              </Tooltip>
-            )}
+            <Tooltip title={overview.smtpConfigured ? "Send from your own Gmail with your tailored resume attached" : "Set SMTP_HOST, SMTP_USER and SMTP_PASS in .env to send email"}>
+              <span><Button variant={overview.policy.channel === "email" ? "contained" : "outlined"} disabled={busy || !prepared || !overview.smtpConfigured || Boolean(overview.duplicateOf)} onClick={openEmail}>Send email…</Button></span>
+            </Tooltip>
             {job.status === "prepared" && <Button onClick={() => act("request-approval")} disabled={busy}>Hold for my approval</Button>}
             <Button color="success" variant="outlined" disabled={busy || Boolean(overview.duplicateOf)} onClick={() => setConfirm("applied")}>I’ve applied — mark as applied</Button>
           </Stack>
@@ -275,7 +279,17 @@ function ApplyPanel({ detail, act, busy, reload }: { detail: Detail; act: (actio
         <DialogContent>
           {confirm === "email" && app?.materials ? (
             <>
-              <DialogContentText sx={{ mb: 1 }}>To <strong>{job.applyEmail}</strong>, from your own mailbox, with your tailored resume (v{app.resumeVersion}) attached. This cannot be undone.</DialogContentText>
+              <TextField
+                label="To"
+                type="email"
+                value={emailTo}
+                onChange={(e) => setEmailTo(e.target.value)}
+                error={emailTo !== "" && !emailValid}
+                helperText={job.applyEmail ? "The address from the posting. Change it to send to a recruiter instead." : "The posting has no apply email. Enter the recruiter's or HR's address."}
+                autoFocus={!emailTo}
+                sx={{ mt: 1, mb: 2 }}
+              />
+              <DialogContentText sx={{ mb: 1 }}>Sent from your own mailbox, with your tailored resume (v{app.resumeVersion}) attached. This cannot be undone.</DialogContentText>
               <Typography sx={{ fontWeight: 600 }}>{app.materials.emailSubject}</Typography>
               <Typography variant="body2" sx={{ whiteSpace: "pre-wrap", mt: 1 }}>{app.materials.emailBody}</Typography>
             </>
@@ -287,10 +301,11 @@ function ApplyPanel({ detail, act, busy, reload }: { detail: Detail; act: (actio
           <Button onClick={() => setConfirm(null)}>Cancel</Button>
           <Button
             variant="contained"
+            disabled={confirm === "email" && !emailValid}
             onClick={() => {
               const which = confirm;
               setConfirm(null);
-              void (which === "email" ? act("send-email") : setStatus("applied"));
+              void (which === "email" ? act("send-email", { to: emailTo.trim() }) : setStatus("applied"));
             }}
           >
             {confirm === "email" ? "Send email" : "Mark as applied"}
@@ -313,10 +328,10 @@ export default function JobPage() {
   const refresh = async () => {
     await Promise.all([reload(), system.reload()]);
   };
-  const act = async (action: string) => {
+  const act = async (action: string, extra: Record<string, unknown> = {}) => {
     setBusy(true);
     try {
-      const res = await api<{ message?: string }>(`/api/jobs/${id}/actions`, { body: { action } });
+      const res = await api<{ message?: string }>(`/api/jobs/${id}/actions`, { body: { action, ...extra } });
       if (res.message) toast(res.message, action === "autofill" ? "info" : "success");
       await refresh();
       return res;

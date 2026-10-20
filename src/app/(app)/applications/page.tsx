@@ -3,9 +3,9 @@
 import { Button, Chip, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
-import { useData } from "@/client/api";
-import { fmtDate, Loadable, PageHeader, ScoreChip, StatusChip } from "@/client/ui";
-import { STATUS_LABEL, type ApplicationDTO, type JobDTO, type JobStatus } from "@/shared/types";
+import { useData } from "@/hooks/useApi";
+import { fmtDate, Loadable, PageHeader, ScoreChip, StatusChip } from "@/components/ui";
+import { STATUS_LABEL, type ApplicationDTO, type JobDTO, type JobStatus } from "@/types";
 
 type Row = Omit<ApplicationDTO, "materials" | "automationLog"> & { job: Pick<JobDTO, "_id" | "title" | "company" | "location" | "status" | "url" | "source" | "match"> };
 const GROUPS: JobStatus[] = ["prepared", "awaiting_approval", "applied", "interview", "offer", "rejected"];

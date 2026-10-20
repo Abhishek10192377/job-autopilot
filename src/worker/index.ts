@@ -1,9 +1,9 @@
 // Background worker: `npm run worker`. Runs scheduled discovery, AI scoring, reminders and (in automatic mode) email applications.
-import "../server/config/loadEnv";
-import { connectDb, disconnectDb } from "../server/db/connect";
-import { setState } from "../server/db/models";
-import { errorMessage, logger } from "../server/lib/logger";
-import { schedulerTick, workOnce } from "../server/queue/handlers";
+import "../config/loadEnv";
+import { connectDb, disconnectDb } from "../config/db";
+import { setState } from "../models";
+import { errorMessage, logger } from "../utils/logger";
+import { schedulerTick, workOnce } from "./handlers";
 
 const log = logger("worker");
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));

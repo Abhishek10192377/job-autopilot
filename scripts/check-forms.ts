@@ -1,14 +1,14 @@
 // Dry run of assisted autofill: `npm run check-forms`.
 // Opens one stored Greenhouse, Lever and Ashby application page in a hidden browser, reads the form and prints
 // what WOULD be filled. Nothing is typed, uploaded or submitted.
-import "../src/server/config/loadEnv";
+import "../src/config/loadEnv";
 import { chromium } from "playwright-core";
-import { fillableAnswers, planFill, readForm } from "../src/server/apply/autofill";
-import { policyFor } from "../src/server/apply/policy";
-import { env } from "../src/server/config/env";
-import { connectDb, disconnectDb } from "../src/server/db/connect";
-import { Job } from "../src/server/db/models";
-import { getProfile } from "../src/server/profile/profile";
+import { fillableAnswers, planFill, readForm } from "../src/services/apply/autofill";
+import { policyFor } from "../src/services/apply/policy";
+import { env } from "../src/config/env";
+import { connectDb, disconnectDb } from "../src/config/db";
+import { Job } from "../src/models";
+import { getProfile } from "../src/services/profile/profile";
 
 async function main() {
   await connectDb();

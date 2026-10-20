@@ -1,9 +1,9 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { Job } from "@/server/db/models";
-import { ingest } from "@/server/discovery/discover";
-import { addManualJob } from "@/server/discovery/manual";
-import { dedupeKey, normalizeUrl } from "@/server/discovery/normalize";
-import { markApplied, TrackingError } from "@/server/tracking/applications";
+import { Job } from "@/models";
+import { ingest } from "@/services/discovery/discover";
+import { addManualJob } from "@/services/discovery/manual";
+import { dedupeKey, normalizeUrl } from "@/services/discovery/normalize";
+import { markApplied, TrackingError } from "@/services/tracking/applications";
 import { rawJob, startDb, stopDb } from "./helpers";
 
 beforeAll(startDb);

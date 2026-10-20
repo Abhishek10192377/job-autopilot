@@ -1,6 +1,6 @@
 // Sets the dashboard password: `npm run set-password -- "your password"`. Only the hash is stored, in .env.local.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { hashPassword } from "../src/server/auth/password";
+import { hashPassword } from "../src/services/auth/password";
 
 const password = process.argv[2];
 if (!password || password.length < 10) {

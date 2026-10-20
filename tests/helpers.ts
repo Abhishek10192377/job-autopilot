@@ -2,8 +2,8 @@ import { mkdtempSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import { connectDb, disconnectDb } from "@/server/db/connect";
-import type { RawJob } from "@/server/discovery/types";
+import { connectDb, disconnectDb } from "@/config/db";
+import type { RawJob } from "@/services/discovery/types";
 
 let server: MongoMemoryServer | undefined;
 let dataDir: string | undefined;

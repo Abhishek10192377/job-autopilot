@@ -1,8 +1,8 @@
 "use server";
 import { cookies } from "next/headers";
 import axios from "axios";
-import { SESSION_COOKIE } from "@/server/auth/session";
-import type { JobList, JobQuery } from "@/shared/types";
+import { SESSION_COOKIE } from "@/services/auth/session";
+import type { JobList, JobQuery } from "@/types";
 
 const API_URL = process.env.API_URL || "http://localhost:3100";
 

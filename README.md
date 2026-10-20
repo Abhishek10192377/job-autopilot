@@ -116,23 +116,32 @@ The assistant never clicks Submit on a form, never touches a CAPTCHA, and never 
 
 ```
 src/
-  app/                  Next.js dashboard: pages and API routes
+  app/                  Next.js pages, and api/**/route.ts (routes only: URL → controller)
     (app)/              Dashboard, Jobs, Job detail, Applications, Profile, Settings
-    api/                Route handlers (validated with zod)
-  client/               Shared UI components and the API client
-  server/
+    api/                One route.ts per URL, each a single line that calls a controller
+  controllers/          Request handling: read input, call services, return the response
+  services/             Business logic
     discovery/          Sources, extraction, normalisation, de-duplication
     matching/           Rule-based scoring, AI scoring, skill lexicon
     documents/          Tailoring, truth check, PDF and DOCX rendering
     apply/              Automation policy, assisted autofill, email applications
     tracking/           Status transitions, applications, statistics
     profile/            Profile storage and resume parsing
-    queue/              MongoDB task queue and worker handlers
     notifications/      Email and follow-up reminders
     auth/               Password hashing and session cookie
-    ai/                 Server-side AI client
-  shared/               Types and status rules shared by server and client
-  worker/               Background worker entry point
+    aiService.ts        Ollama client
+    jobService.ts       Filtered, paginated job list
+    settingsService.ts  Settings storage
+  models/               Mongoose models, one file per collection
+  middlewares/          route() wrapper: DB connection, error responses, rate limiting
+  validators/           zod schemas for request bodies
+  config/               env.ts (all environment variables), loadEnv.ts, db.ts (MongoDB connection)
+  utils/                Logger, HTTP fetch, robots.txt, text helpers, status rules
+  types/                Types shared by server and client
+  worker/               Background worker: entry point, task queue, task handlers
+  components/           Shared UI components
+  hooks/                useData() and the API client for pages
+  middleware.ts         Next.js middleware: login check and CSRF protection
 scripts/                Setup and command-line tools
 tests/                  Automated tests
 seed/profile.json       Profile transcribed from the resume

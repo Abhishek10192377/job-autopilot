@@ -3,10 +3,10 @@
 import { Alert, Box, Button, Checkbox, Chip, FormControlLabel, FormGroup, Grid, MenuItem, Paper, Stack, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useState, type ReactNode } from "react";
 import { useToast } from "@/app/providers";
-import { api, useData } from "@/client/api";
-import { useSystem } from "@/client/Shell";
-import { fmtDateTime, Loadable, PageHeader } from "@/client/ui";
-import type { Settings, SourceStatus } from "@/shared/types";
+import { api, useData } from "@/hooks/useApi";
+import { useSystem } from "@/components/Shell";
+import { fmtDateTime, Loadable, PageHeader } from "@/components/ui";
+import type { Settings, SourceStatus } from "@/types";
 
 interface Payload {
   settings: Settings;

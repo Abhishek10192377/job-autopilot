@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { SESSION_COOKIE, verifySessionToken } from "@/server/auth/session";
+import { SESSION_COOKIE, verifySessionToken } from "@/services/auth/session";
 
 const PUBLIC = new Set(["/login", "/api/auth/login"]);
 

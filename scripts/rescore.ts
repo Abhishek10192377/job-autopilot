@@ -1,8 +1,8 @@
 // Re-score every stored job against the current profile and settings: `npm run rescore`.
-import "../src/server/config/loadEnv";
-import { connectDb, disconnectDb } from "../src/server/db/connect";
-import { Job } from "../src/server/db/models";
-import { rescoreAll } from "../src/server/matching/match";
+import "../src/config/loadEnv";
+import { connectDb, disconnectDb } from "../src/config/db";
+import { Job } from "../src/models";
+import { rescoreAll } from "../src/services/matching/match";
 
 connectDb()
   .then(async () => {

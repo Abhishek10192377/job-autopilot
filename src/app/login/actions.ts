@@ -1,10 +1,10 @@
 "use server";
 
 import { cookies, headers } from "next/headers";
-import { ApiError, rateLimit } from "@/server/api";
-import { verifyPassword } from "@/server/auth/password";
-import { authConfigured, createSessionToken, SESSION_COOKIE, SESSION_DAYS } from "@/server/auth/session";
-import { env } from "@/server/config/env";
+import { ApiError, rateLimit } from "@/middlewares/apiHandler";
+import { verifyPassword } from "@/services/auth/password";
+import { authConfigured, createSessionToken, SESSION_COOKIE, SESSION_DAYS } from "@/services/auth/session";
+import { env } from "@/config/env";
 
 export interface LoginResult {
   ok: boolean;

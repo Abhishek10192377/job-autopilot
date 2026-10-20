@@ -6,7 +6,7 @@ import {
 import { useRouter } from "next/navigation";
 import {  useState } from "react";
 import { useToast } from "@/app/providers";
-import { api } from "@/client/api";
+import { api } from "@/hooks/useApi";
 
 const ACTIVE = "matched,saved,prepared,awaiting_approval";
 const EMPTY = { title: "", company: "", location: "", workMode: "", status: ACTIVE, minScore: "", maxExp: "", salary: false, sort: "score" };

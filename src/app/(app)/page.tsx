@@ -6,9 +6,9 @@ import { Alert, Box, Button, Chip, Divider, Grid, IconButton, List, ListItem, Li
 import Link from "next/link";
 import { useState } from "react";
 import { useToast } from "@/app/providers";
-import { api } from "@/client/api";
-import { useSystem } from "@/client/Shell";
-import { fmtDate, fmtDateTime, fmtExperience, Loadable, PageHeader, ScoreChip, WorkModeChip } from "@/client/ui";
+import { api } from "@/hooks/useApi";
+import { useSystem } from "@/components/Shell";
+import { fmtDate, fmtDateTime, fmtExperience, Loadable, PageHeader, ScoreChip, WorkModeChip } from "@/components/ui";
 
 const LEVEL_COLOR = { info: "text.secondary", success: "success.main", warning: "warning.main", error: "error.main" } as const;
 

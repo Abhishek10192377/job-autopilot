@@ -1,8 +1,4 @@
-import { NextResponse } from "next/server";
-import { SESSION_COOKIE } from "@/server/auth/session";
+import { logout } from "@/controllers/authController";
 
-export async function POST() {
-  const res = NextResponse.json({ ok: true });
-  res.cookies.delete(SESSION_COOKIE);
-  return res;
-}
+// No database needed, so this one skips the route() wrapper.
+export const POST = logout;
