@@ -14,7 +14,7 @@ export async function connectDb() {
         throw error;
       });
   }
-  console.log("Connected to MongoDB");  
+
   return cached.mongoose;
 }
 
